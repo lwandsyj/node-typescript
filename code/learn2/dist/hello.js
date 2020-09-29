@@ -1,52 +1,24 @@
 "use strict";
-var b = null;
-console.log(b);
-var c = function (a) { return void (0); };
-var d = {};
-var x = {
-    sayTest: function (x, y) {
-        console.log('x.sayTest');
-    },
-    sayhello: function (x, y) {
-        console.log('x.sayhello');
-    }
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
-x.sayTest('1', '2');
-x.sayhello('2', '3');
-var Message = (function () {
-    function Message(say) {
-        this.say = say;
-        this.say = "123";
-    }
-    Message.prototype.setName = function (name) {
-        return name;
-    };
-    return Message;
-}());
-var msg = new Message('');
-console.log(msg.setName('name'));
-var Message2 = (function () {
-    function Message2() {
-        this.say = "44";
-    }
-    return Message2;
-}());
-function test(x) {
-    return x;
-}
-var obj = {
-    name: '123',
-    say: function () {
-        console.log(this.name);
-    }
-};
-obj.say();
-function test2(name) {
-    switch (name) {
-        case 3:
-        case 2:
-            break;
-    }
-}
-test2(3);
+Object.defineProperty(exports, "__esModule", { value: true });
+var m = __importStar(require("./learn"));
+console.log(m);
 //# sourceMappingURL=hello.js.map
