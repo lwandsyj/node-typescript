@@ -1,4 +1,5 @@
-var b = 2;
+"use strict";
+var b = null;
 console.log(b);
 var c = function (a) { return void (0); };
 var d = {};

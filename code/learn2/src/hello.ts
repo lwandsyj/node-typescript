@@ -2,7 +2,7 @@
 /**
  * 这是注释文件
  */
-const b: Number = 2;
+const b: Number = null;
 console.log(b)
 
 const c: (a: String) => void = (a: String) => void (0);

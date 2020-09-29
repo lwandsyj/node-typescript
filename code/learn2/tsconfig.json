@@ -8,31 +8,33 @@
     "module": "commonjs",                     /* 生成的模块类型: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     // "lib": [],                             /* Specify library files to be included in the compilation. */
      "allowJs": true,                         /* 允许在ts文件中引入js 文件模块 */
-    // "checkJs": true,                       /* 检查js文件中的语法错误. */
-    // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
-    // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-     "sourceMap": true,                     /* 生成 '.map' 文件. */
+    // "checkJs": true,                       /* 检查js文件中的语法错误.需要配合allowJs 使用 */
+    // "jsx": "preserve",                     /* 用于指定按照何种方式生成jsx代码: 'preserve', 'react-native', or 'react'. */
+     "declaration": true,                     /* 是否生成 '.d.ts' 声明文件. */
+     "declarationDir":"./map",                     /*默认生成的.d.ts文件存放路径默认与.ts文件相同*/
+     "declarationMap": true,                  /* 为 '.d.ts' 文件生成.d.ts.map 文件，因此与declaration一起配置. */
+     "sourceMap": true,                       /* 生成 '.map' 文件. */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
      "outDir": "./dist",                          /* 生成js文件的存放默认，默认为(./)当前目录 */
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
      "removeComments": true,                /* 是否生成注释. */
-    // "noEmit": true,                        /* Do not emit outputs. */
+    //"noEmit": true,                        /* 当设置为true时，tsc编译ts文件时将不会输出js文件. */
+    //"noEmitOnError":true,                  /* 当typesript 文件中有错误时，不生成文件*/
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
-    // "strict": true,                           /* 严格模式，会严格检查类型 */
+     "strict": true,                           /* 严格模式，会严格检查类型 */
     // "noImplicitAny": true,                 /* 变量和函数参数不允许出现隐式any 类型. */
     // "strictNullChecks": true,                /* 严格检查null 类型 */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictPropertyInitialization": true,    /* 类成员必须在定义或构造函数中初始化. */
     // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
-    // "alwaysStrict": true,                  /* 在生成的js 文件中显示"use strict"; */
+     "alwaysStrict": true,                  /* 在生成的js 文件中显示"use strict"; */
 
     /* Additional Checks */
     // "noUnusedLocals": true,                /* Report errors on unused locals. */
@@ -47,7 +49,7 @@
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
-    // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
+    // "allowSyntheticDefaultImports": true,  /* 设置为true时，则允许从没有默认导出的模块中默认导入 */
     "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
     // "allowUmdGlobalAccess": true,          /* Allow accessing UMD globals from modules. */
@@ -64,6 +66,6 @@
 
     /* Advanced Options */
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true  /* 强制区分大小写. */
   }
 }
