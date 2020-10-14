@@ -1,23 +1,35 @@
-function show() {
+function show(params:string) {
     console.log("f(): evaluated");
     return function (target:any, propertyKey: string, descriptor: PropertyDescriptor) {
-        console.dir(JSON.stringify(target))
+        console.dir(target)
         console.log(propertyKey)
         console.log(descriptor)
         console.log("f(): called");
+       
     }
 }
 function f(target:any,propertyKey: string,descriptor: PropertyDescriptor){
     console.log(target)
 }
 class Test{
-    
-  
+   
     say(){
-        console.log(arguments.callee)
-        console.log(Object.prototype.toString.call(this))
+       console.log('Test.say')
     }
 }
 
-var a= new Test();
-a.say()
+function learn(constructor:Function){
+    console.log(constructor)
+}
+
+@learn
+class Test2{
+    constructor(){
+        console.log('2222')
+    }
+    @show('s')
+    say(){
+        console.log('Test2.say')
+    }
+}
+(new Test2()).say()
