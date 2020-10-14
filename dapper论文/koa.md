@@ -113,3 +113,62 @@
                 });
             };
             };
+
+5. 本地数据追踪
+
+        const express = require("express");
+        const zipkinMiddleware = require("zipkin-instrumentation-express").expressMiddleware;
+
+        const { tracer } = require("./tracer");
+        const { delay } = require("../shared/utils");
+
+        const app = express();
+        app.use(zipkinMiddleware({ tracer }));
+
+        app.get("/time", async (req, res) => {
+            await tracer.local("awaiting 200ms delay", async () => {
+                await delay(200);
+            });
+            res.json({ currentDate: new Date().getTime() });
+        });
+
+        module.exports = {
+            app,
+        };
+
+6. axios zipkin 追踪
+
+        const { tracer } = require("./tracer");
+        const axios = require("zipkin-instrumentation-axios")(require("axios"), {
+            tracer,
+            serviceName: "axios-client",
+        });
+
+        module.exports = { axios };
+
+        const path = require("path");
+        const express = require("express");
+        const zipkinMiddleware = require("zipkin-instrumentation-express").expressMiddleware;
+
+        const { tracer } = require("./tracer");
+        const { axios } = require("./axios");
+        const { delay } = require("../shared/utils");
+
+        const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3001";
+
+        const app = express();
+        app.use(zipkinMiddleware({ tracer }));
+        app.set("view engine", "pug");
+        app.set("views", path.join(__dirname, "views"));
+
+        app.get("/", async (req, res) => {
+            await tracer.local("awaiting 100ms delay", async () => {
+                await delay(100);
+            });
+            const result = await axios.get(`${API_ENDPOINT}/time`);
+            res.render("index", { date: new Date(result.data.currentDate).toLocaleTimeString() });
+            });
+
+        module.exports = {
+            app,
+        };
